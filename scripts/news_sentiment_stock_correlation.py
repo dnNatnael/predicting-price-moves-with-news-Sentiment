@@ -214,6 +214,16 @@ def aggregate_daily_sentiment(news: pd.DataFrame,
     Returns:
         DataFrame with aggregated daily sentiment
     """
+    if date_column not in news.columns:
+        if "effective_date" in news.columns:
+            date_column = "effective_date"
+        elif "date_only" in news.columns:
+            date_column = "date_only"
+        elif "date" in news.columns:
+            date_column = "date"
+        else:
+            raise KeyError(f"Date column '{date_column}' not found in DataFrame")
+
     if method == "mean":
         sentiment = (
             news.groupby(date_column)["sentiment"]

@@ -34,7 +34,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Tuple, Optional, Any
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -46,8 +46,15 @@ from nltk.stem import WordNetLemmatizer
 import re
 
 # Topic modeling imports
-from gensim import corpora, models
-from gensim.models import CoherenceModel
+try:
+    from gensim import corpora, models
+    from gensim.models import CoherenceModel
+    GENSIM_AVAILABLE = True
+except ImportError:
+    GENSIM_AVAILABLE = False
+    corpora = None
+    models = None
+    CoherenceModel = None
 
 # Optional imports
 try:
@@ -156,6 +163,8 @@ class TopicModeler:
     
     def prepare_corpus(self):
         """Prepare corpus for topic modeling"""
+        if not GENSIM_AVAILABLE:
+            raise ImportError("gensim is not installed. Install it with: pip install gensim")
         print("Preprocessing headlines...")
         self.processed_texts = self.df['headline'].apply(self.preprocess_text).tolist()
         
@@ -237,7 +246,7 @@ class TopicModeler:
         plt.close()
     
     def train_lda(self, num_topics: int = 10, passes: int = 10, 
-                  alpha = 'auto', eta = 'auto') -> models.LdaModel:
+                  alpha = 'auto', eta = 'auto') -> Any:
         """
         Train LDA model
         
@@ -294,6 +303,9 @@ class TopicModeler:
         Returns:
             Dictionary with topics
         """
+        if not GENSIM_AVAILABLE:
+            raise ImportError("gensim is not installed. Install it with: pip install gensim")
+        
         if self.lda_model is None:
             raise ValueError("LDA model not trained. Call train_lda() first.")
         
@@ -310,6 +322,9 @@ class TopicModeler:
     
     def plot_lda_topics(self, num_words: int = 10, save: bool = True):
         """Visualize LDA topics"""
+        if not GENSIM_AVAILABLE:
+            raise ImportError("gensim is not installed. Install it with: pip install gensim")
+        
         if self.lda_model is None:
             raise ValueError("LDA model not trained. Call train_lda() first.")
         
@@ -350,6 +365,37 @@ class TopicModeler:
             plt.savefig(f'{self.output_dir}/lda_topics.png', dpi=300, bbox_inches='tight')
         plt.close()
     
+    @staticmethod
+    def _sanitize_pyldavis_data(vis):
+        """
+        Ensure all numerical coordinates and metrics in pyLDAvis PreparedData
+        are standard real floats. This eliminates TypeError: Object of type
+        complex128 is not JSON serializable when negative eigenvalues occur in MDS/PCoA.
+        """
+        if vis is None:
+            return vis
+        try:
+            # Topic coordinates (x, y) often contain complex128 when negative eigenvalues occur
+            if hasattr(vis, 'topic_coordinates') and isinstance(vis.topic_coordinates, pd.DataFrame):
+                coords = vis.topic_coordinates
+                for col in ['x', 'y']:
+                    if col in coords.columns:
+                        coords[col] = coords[col].apply(
+                            lambda v: float(v.real) if hasattr(v, 'real') else (float(np.real(v)) if isinstance(v, (complex, np.number)) else v)
+                        ).astype(float)
+            
+            # Check other dataframes in PreparedData
+            for attr in ['topic_info', 'token_table']:
+                if hasattr(vis, attr):
+                    df = getattr(vis, attr)
+                    if isinstance(df, pd.DataFrame):
+                        for col in df.columns:
+                            if np.iscomplexobj(df[col]):
+                                df[col] = np.real(df[col]).astype(float)
+        except Exception as err:
+            warnings.warn(f"Warning during pyLDAvis data sanitization: {err}")
+        return vis
+
     def create_lda_visualization(self, save: bool = True):
         """Create interactive LDA visualization using pyLDAvis"""
         if not PYLDAVIS_AVAILABLE:
@@ -357,20 +403,42 @@ class TopicModeler:
                 "pyLDAvis is not installed. Install it with: pip install pyLDAvis"
             )
         
+        if not GENSIM_AVAILABLE:
+            raise ImportError("gensim is not installed. Install it with: pip install gensim")
+        
         if self.lda_model is None:
             raise ValueError("LDA model not trained. Call train_lda() first.")
         
         print("Creating LDA visualization...")
-        vis = gensimvis.prepare(self.lda_model, self.corpus, self.dictionary, sort_topics=False)
+        # Attempt preparation with default PCoA; fall back to metric MDS ('mmds') if needed
+        try:
+            vis = gensimvis.prepare(self.lda_model, self.corpus, self.dictionary, sort_topics=False)
+        except Exception as prep_err:
+            print(f"PCoA projection encountered an issue ({prep_err}); falling back to mmds projection...")
+            vis = gensimvis.prepare(self.lda_model, self.corpus, self.dictionary, sort_topics=False, mds='mmds')
+        
+        # Sanitize any complex128 coordinates so they are strictly JSON-serializable
+        vis = self._sanitize_pyldavis_data(vis)
         
         if save:
-            pyLDAvis.save_html(vis, f'{self.output_dir}/lda_visualization.html')
+            try:
+                pyLDAvis.save_html(vis, f'{self.output_dir}/lda_visualization.html')
+            except TypeError as err:
+                if 'complex' in str(err) or 'serializable' in str(err):
+                    # Fallback to mmds if serialization still encountered complex types
+                    vis = gensimvis.prepare(
+                        self.lda_model, self.corpus, self.dictionary, sort_topics=False, mds='mmds'
+                    )
+                    vis = self._sanitize_pyldavis_data(vis)
+                    pyLDAvis.save_html(vis, f'{self.output_dir}/lda_visualization.html')
+                else:
+                    raise err
             print(f"LDA visualization saved to {self.output_dir}/lda_visualization.html")
         
         return vis
     
     def train_bertopic(self, num_topics: Optional[int] = None, 
-                      min_topic_size: int = 10) -> Optional[BERTopic]:
+                      min_topic_size: int = 10) -> Optional[Any]:
         """
         Train BERTopic model
         
@@ -388,6 +456,26 @@ class TopicModeler:
         print("Training BERTopic model...")
         print("This may take a while...")
         
+        # Suppress Hugging Face unauthenticated request warnings and set environment
+        import os
+        import logging
+        os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+        os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
+        logging.getLogger("huggingface_hub").setLevel(logging.ERROR)
+        warnings.filterwarnings("ignore", message=".*unauthenticated requests to the HF Hub.*")
+
+        # Use standard text progress bars to prevent VS Code jupyter-ipywidget-renderer errors
+        try:
+            import tqdm.auto
+            import tqdm.autonotebook
+            import tqdm.std
+            tqdm.auto.tqdm = tqdm.std.tqdm
+            tqdm.auto.trange = tqdm.std.trange
+            tqdm.autonotebook.tqdm = tqdm.std.tqdm
+            tqdm.autonotebook.trange = tqdm.std.trange
+        except Exception:
+            pass
+
         # Prepare documents
         documents = self.df['headline'].tolist()
         
@@ -517,6 +605,9 @@ class TopicModeler:
             - c_uci: Uses conditional probability and log ratio
             - c_npmi: Normalized PMI, better for shorter texts
         """
+        if not GENSIM_AVAILABLE:
+            raise ImportError("gensim is not installed. Install it with: pip install gensim")
+        
         if self.lda_model is None:
             raise ValueError("LDA model not trained. Call train_lda() first.")
         

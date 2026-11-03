@@ -5,8 +5,15 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import pynance as pn
-import talib
+try:
+    import pynance as pn
+except ImportError:
+    pn = None
+
+try:
+    import talib
+except ImportError:
+    talib = None
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
@@ -147,6 +154,9 @@ def add_ta_indicators(df: pd.DataFrame,
     if sma_windows is None:
         sma_windows = [20, 50, 100]
     
+    if talib is None:
+        raise ImportError("TA-Lib is required for technical indicator calculations. Install TA-Lib.")
+    
     close = df["Close"]
     high = df["High"]
     low = df["Low"]
@@ -209,6 +219,8 @@ def compute_pynance_metrics(df: pd.DataFrame, volatility_window: int = 30) -> di
     Returns:
         Dictionary with computed metrics
     """
+    if pn is None:
+        raise ImportError("PyNance is required for metric calculations. Install pynance.")
     metrics = {}
     close_frame = df[["Close"]].copy()
 

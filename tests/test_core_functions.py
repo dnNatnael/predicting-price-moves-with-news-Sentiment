@@ -15,6 +15,12 @@ import pandas as pd
 import pytest
 from datetime import datetime, timedelta
 
+try:
+    import gensim
+    GENSIM_AVAILABLE = True
+except ImportError:
+    GENSIM_AVAILABLE = False
+
 
 class TestEDAAnalyzer:
     """Tests for EDAAnalyzer class"""
@@ -115,6 +121,7 @@ class TestTopicModeler:
         assert 'for' not in tokens
         assert 'the' not in tokens
     
+    @pytest.mark.skipif(not GENSIM_AVAILABLE, reason="gensim not installed")
     def test_prepare_corpus(self, sample_df):
         """Test corpus preparation"""
         from topic_modeling import TopicModeler
@@ -127,6 +134,7 @@ class TestTopicModeler:
         assert modeler.dictionary is not None
         assert modeler.corpus is not None
     
+    @pytest.mark.skipif(not GENSIM_AVAILABLE, reason="gensim not installed")
     def test_extract_frequent_keywords(self, sample_df):
         """Test keyword extraction"""
         from topic_modeling import TopicModeler

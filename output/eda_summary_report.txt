@@ -45,7 +45,7 @@ Most Active Month:
   May: 11364 articles
 
 Peak Hour:
-  Hour 14: 7669 articles
+  Hour 14:00 with 7669 articles
 
 4. DETECTED NEWS ACTIVITY SPIKES
 --------------------------------------------------------------------------------

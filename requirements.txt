@@ -24,3 +24,4 @@ plotly
 umap-learn
 hdbscan
 pyLDAvis
+ipywidgets
