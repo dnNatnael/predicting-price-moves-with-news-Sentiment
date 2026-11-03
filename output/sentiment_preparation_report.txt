@@ -1,0 +1,49 @@
+================================================================================
+SENTIMENT ANALYSIS PREPARATION REPORT
+Nova Financial Solutions - Quantitative Research
+================================================================================
+
+1. GLOBAL SENTIMENT OVERVIEW
+--------------------------------------------------------------------------------
+Total Articles Processed: 55,987
+Mean Sentiment Polarity: 0.0669
+Median Sentiment Polarity: 0.0000
+Sentiment Standard Deviation: 0.3137
+Positive Articles (> 0.05): 16,423 (29.3%)
+Negative Articles (< -0.05): 13,200 (23.6%)
+Neutral Articles: 26,364 (47.1%)
+
+2. PUBLISHER SENTIMENT BIAS
+--------------------------------------------------------------------------------
+Top 5 Most Bullish Publishers (Highest Positive Bias):
+  * Benzinga Newsdesk: mean=0.5460, bias=+0.4791 (3177 articles)
+  * Daniel Ho: mean=0.3796, bias=+0.3127 (10 articles)
+  * Alex Furno: mean=0.2687, bias=+0.2018 (16 articles)
+  * Dwight Einhorn: mean=0.2646, bias=+0.1978 (17 articles)
+  * Daniel Hayden IV: mean=0.2289, bias=+0.1621 (19 articles)
+
+Top 5 Most Bearish Publishers (Lowest Negative Bias):
+  * Jose Rodrigo Safdiye: mean=-0.5267, bias=-0.5936 (48 articles)
+  * Ramon Lewis: mean=-0.1967, bias=-0.2635 (15 articles)
+  * Mark Fritz: mean=-0.1400, bias=-0.2069 (16 articles)
+  * FreightWaves: mean=-0.0908, bias=-0.1577 (47 articles)
+  * Jonathan Chen: mean=-0.0763, bias=-0.1432 (18 articles)
+
+3. NEWS SPIKE SENTIMENT DYNAMICS
+--------------------------------------------------------------------------------
+Spike Days Analyzed: 51
+Mean Sentiment on Normal Days: 0.0507
+Mean Sentiment on Spike Days:  0.0918
+Difference: +0.0411
+Statistical Significance (t-test): p = 0.0000e+00 (Significant: True)
+
+4. MARKET SESSION SENTIMENT METRICS
+--------------------------------------------------------------------------------
+  * Overnight: Average Daily Sentiment = 0.0304
+  * Post-Market: Average Daily Sentiment = 0.0995
+  * Pre-Market: Average Daily Sentiment = 0.0857
+  * Regular-Hours: Average Daily Sentiment = 0.0661
+
+================================================================================
+END OF REPORT
+================================================================================
