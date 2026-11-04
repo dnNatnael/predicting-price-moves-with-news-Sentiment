@@ -1,0 +1,16 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+.pytest_cache/
+tests/
+frontend/node_modules/
+data/raw_analyst_ratings.csv
+*.log
+*.tmp
+.ipynb_checkpoints/
+

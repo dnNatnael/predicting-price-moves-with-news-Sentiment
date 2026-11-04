@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: financial-sentiment-intelligence
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 8000
+

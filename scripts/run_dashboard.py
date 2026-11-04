@@ -10,6 +10,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -30,11 +31,12 @@ def parse_args() -> argparse.Namespace:
         default="127.0.0.1",
         help="Host interface to bind to (default: 127.0.0.1).",
     )
+    default_port = int(os.getenv("PORT", 8000))
     parser.add_argument(
         "--port",
         type=int,
-        default=8000,
-        help="Port number to serve on (default: 8000).",
+        default=default_port,
+        help=f"Port number to serve on (default: {default_port}).",
     )
     parser.add_argument(
         "--reload",
