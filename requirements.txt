@@ -25,3 +25,5 @@ umap-learn
 hdbscan
 pyLDAvis
 ipywidgets
+fastapi
+uvicorn

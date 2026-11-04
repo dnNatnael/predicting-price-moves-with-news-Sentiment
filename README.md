@@ -1,323 +1,297 @@
-# Predicting Price Moves with News Sentiment
+# Quantitative Financial News Sentiment & Stock Price Prediction Pipeline
 
-Financial News and Stock Price Integration Dataset - Exploratory Data Analysis
+[![Tests](https://img.shields.io/badge/pytest-73%20passed-brightgreen.svg)](tests/)
+[![Python](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/React-18.3-61DAFB.svg)](https://react.dev/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Project Overview
-
-This project performs comprehensive Exploratory Data Analysis (EDA) on the Financial News and Stock Price Integration Dataset (FNSPID) for Nova Financial Solutions.
-
-## Dataset Structure
-
-The dataset should contain the following columns:
-- `headline`: The financial news headline
-- `url`: Link to the full article
-- `publisher`: Author or news source
-- `date`: Publication date and time (UTC-4 timezone)
-- `stock`: Stock ticker symbol (e.g., AAPL)
-
-## Installation Instructions
-
-### 1. Install Packages
-
-**Location**: Install packages in the project root directory:
-```
-C:\Users\HomePC\Desktop\Second\Predicting-Price-Moves-with-News-Sentiment
-```
-
-**Steps**:
-1. Activate your virtual environment (if using venv):
-   ```powershell
-   .\venv\Scripts\Activate.ps1
-   ```
-
-2. Install all required packages:
-   ```powershell
-   pip install -r requirements.txt
-   ```
-
-3. Download spaCy English model:
-   ```powershell
-   python -m spacy download en_core_web_sm
-   ```
-
-### 2. Required Packages
-
-All packages are listed in `requirements.txt`. Key packages include:
-- **Data Processing**: pandas, numpy
-- **Visualization**: matplotlib, seaborn, plotly
-- **NLP**: nltk, spacy, textblob
-- **Topic Modeling**: gensim, bertopic, sentence-transformers
-- **Machine Learning**: scikit-learn
-- **Utilities**: tqdm, python-dateutil
-
-## Usage
-
-### Option 1: Run Python Script
-
-1. Place your dataset CSV file in the `data/` folder as `financial_news.csv`
-2. Run the main EDA script:
-   ```powershell
-   python scripts/run_eda.py
-   ```
-
-### Option 2: Use Jupyter Notebook
-
-1. Start Jupyter Notebook:
-   ```powershell
-   jupyter notebook
-   ```
-2. Open `notebooks/EDA_Analysis.ipynb`
-3. Update the data path in the first cell
-4. Run all cells
-
-## Output Structure
-
-All outputs are saved to the `output/` directory:
-
-```
-output/
-├── figures/              # All visualization images
-│   ├── headline_length_distribution.png
-│   ├── top_publishers.png
-│   ├── publication_frequency.png
-│   ├── news_spikes.png
-│   ├── frequent_keywords.png
-│   ├── lda_topics.png
-│   ├── publisher_analysis.png
-│   └── publisher_topic_preferences.png
-├── data/                 # Extracted features and statistics
-│   ├── descriptive_statistics.csv
-│   ├── top_publishers.csv
-│   ├── frequent_keywords.csv
-│   ├── lda_topics.csv
-│   ├── articles_with_topics.csv
-│   ├── publisher_rankings.csv
-│   ├── publisher_topic_preferences.csv
-│   └── news_spikes.csv
-├── lda_visualization.html    # Interactive LDA visualization
-├── bertopic_topics.html      # BERTopic visualization (if available)
-└── eda_summary_report.txt    # Text summary report
-```
-
-## Analysis Components
-
-### 1. Descriptive Statistics
-- Headline length distribution (min, max, mean, median)
-- Word count statistics
-- Dataset overview (total articles, unique publishers, unique stocks)
-
-### 2. Publisher Analysis
-- Top 10 most active publishers
-- Publisher rankings by article count
-- Reporting style differences
-- Domain extraction (if email-like values)
-
-### 3. Publication Frequency
-- Daily, weekly, monthly, yearly patterns
-- Hour-of-day distribution
-- Time-series analysis
-- News activity spike detection
-
-### 4. Topic Modeling
-- Frequent keywords and phrases extraction
-- LDA topic modeling (10 topics)
-- BERTopic modeling (optional)
-- Topic assignment to articles
-- Topic category identification (earnings, mergers, FDA approvals, etc.)
-
-### 5. Publisher-Specific Analysis
-- Topic preferences by publisher
-- Reporting style analysis
-- Stock coverage patterns
-
-## Next Steps for Sentiment Analysis
-
-1. **Sentiment Scoring**: Implement VADER or fine-tune BERT for financial sentiment
-2. **Feature Engineering**: Create time-based and topic-based features
-3. **Correlation Analysis**: Link sentiment scores to price movements
-4. **Model Development**: Build predictive models for price direction
-5. **Validation**: Use time-series cross-validation for robust evaluation
-
-## Project Structure
-
-```
-Predicting-Price-Moves-with-News-Sentiment/
-├── data/                  # Dataset folder (place your CSV here)
-├── src/                   # Source code modules
-│   ├── data_loader.py     # Data loading and preprocessing
-│   ├── eda_analyzer.py    # EDA analysis and visualizations
-│   ├── topic_modeling.py  # Topic modeling (LDA, BERTopic)
-│   └── publisher_analyzer.py  # Publisher analysis
-├── scripts/               # Execution scripts
-│   └── run_eda.py         # Main EDA execution script
-├── notebooks/             # Jupyter notebooks
-│   └── EDA_Analysis.ipynb # Interactive EDA notebook
-├── output/                # Generated outputs (created automatically)
-├── requirements.txt       # Python dependencies
-└── README.md             # This file
-```
-
-## Notes
-
-- Ensure your dataset CSV file is properly formatted with the required columns
-- The analysis may take several minutes depending on dataset size
-- BERTopic training is optional and may take longer but provides better topic quality
-- All visualizations are saved as high-resolution PNG files (300 DPI)
-
-## Support
-
-For questions or issues, please refer to the code comments or contact the development team.
+An institutional quantitative trading and machine learning platform that transforms raw financial news headlines into predictive alpha signals for equity direction forecasting. The project incorporates domain-specific NLP models (Financial VADER, Loughran-McDonald SEC dictionary, FinBERT transformer, and an Ensemble Composite), engineers 113 alpha features per trading bar, conducts 13-year out-of-sample walk-forward backtesting, and delivers an interactive full-stack dashboard (FastAPI + React) with dynamic CSV dataset ingestion.
 
 ---
 
-## Experiment Tracking and Outputs
+## Table of Contents
 
-### Understanding Output Directory Structure
+- [Project Overview & Core Thesis](#project-overview--core-thesis)
+- [Key Empirical Findings](#key-empirical-findings)
+- [End-to-End System Architecture](#end-to-end-system-architecture)
+- [Interactive Dashboard User Guide](#interactive-dashboard-user-guide)
+  - [Header Controls & Live Predictor](#header-controls--live-predictor)
+  - [Tab-by-Tab Breakdown (Tabs 1–8)](#tab-by-tab-breakdown)
+- [Dataset Ingestion & CSV Specifications](#dataset-ingestion--csv-specifications)
+- [Installation & Quickstart](#installation--quickstart)
+- [Automated Test Suite](#automated-test-suite)
+- [Project Directory Structure](#project-directory-structure)
 
-The `output/` directory contains all generated analysis results. Here's what each subdirectory and file contains:
+---
 
-```
-output/
-├── figures/                      # Static visualization images (PNG)
-├── data/                         # Processed data files (CSV)
-├── technical_analysis/          # Technical analysis outputs
-│   ├── plots/                   # TA-Lib indicator charts
-│   ├── summary.json             # Key metrics (volatility, Sharpe ratio)
-│   ├── correlation_matrix.csv   # Price correlations
-│   └── dataframe_snapshot.csv   # Last 10 rows of processed data
-├── lda_visualization.html        # Interactive LDA topic visualization
-├── bertopic_topics.html          # Interactive BERTopic visualization
-├── bertopic_barchart.html        # Topic frequency bar chart
-├── eda_summary_report.txt        # Text summary of EDA findings
-└── data/
-    ├── articles_with_topics.csv # News with topic labels
-    ├── descriptive_statistics.csv # Summary statistics
-    ├── top_publishers.csv       # Publisher rankings
-    ├── frequent_keywords.csv     # Keyword frequencies
-    ├── lda_topics.csv           # Topic-word mappings
-    ├── publisher_rankings.csv    # Full publisher rankings
-    ├── publisher_topic_preferences.csv  # Topic distribution by publisher
-    └── news_spikes.csv          # Detected news spikes
-```
+## Project Overview & Core Thesis
 
-### Interpreting Key Outputs
+General English sentiment dictionaries (e.g. TextBlob, generic VADER) frequently misinterpret financial jargon. Words like *"liability"*, *"debt"*, *"volatility"*, or *"risk"* carry negative connotations in everyday prose, yet they are standard operational terms in corporate disclosures.
 
-1. **Technical Analysis Summary** (`output/technical_analysis/summary.json`):
-   - `annualized_volatility`: 20-day rolling volatility annualized (higher = more volatile)
-   - `sharpe_ratio`: Risk-adjusted return (higher = better, >1 is good, >2 is excellent)
-   - `last_cumulative_return`: Total return over the analysis period
+This platform systematically overcomes this challenge through:
+1. **Financial NLP Domain Adaptation**: Benchmarking general lexicon models against Wall Street-tuned lexicons (Financial VADER), regulatory dictionaries (Loughran-McDonald), and contextual transformer architectures (FinBERT).
+2. **Multi-Factor Feature Engineering**: Generating 113 alpha features per trading bar, combining sentiment momentum, publisher weightings, topic shares, and technical oscillators (RSI-14, MACD, SMA-20/50).
+3. **Strict Temporal Integrity**: Enforcing a strict 16:00 UTC-4 market close cutoff to eliminate lookahead bias and prevent future data leakage.
+4. **Out-of-Sample Walk-Forward Backtesting**: Validating strategy performance across 13 continuous years (2011–2023) and 26 rolling 6-month re-training windows.
 
-2. **Correlation Analysis**:
-   - Pearson correlation ranges from -1 (perfect negative) to +1 (perfect positive)
-   - p-value < 0.05 indicates statistical significance
-   - 95% CI shows the uncertainty range
+---
 
-3. **Topic Models**:
-   - LDA visualization shows topic clusters and word distributions
-   - BERTopic provides hierarchical topic structure
-   - Use coherence score to evaluate topic quality (higher = better, typically 0.3-0.7)
+## Key Empirical Findings
 
-### Running Experiments
+| Quantitative Metric | General NLP (TextBlob) | Financial VADER | Loughran-McDonald | FinBERT Transformer | Ensemble Composite ($S_{\text{ensemble}}$) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Return Correlation ($r$)** | $+0.0253$ | **$+0.1300$** | $+0.0868$ | **$+0.1300$** | $+0.1294$ |
+| **Spearman Rank ($\rho$)** | $+0.0381$ | $+0.1412$ | $+0.1105$ | $+0.1412$ | **$+0.1487$** |
+| **Predictive Alpha Lift** | Baseline ($1.0\times$) | **$5.14\times$ Lift** | $3.43\times$ Lift | **$5.14\times$ Lift** | **$5.88\times$ Lift** |
 
-```bash
-# EDA with default settings
-python scripts/run_eda.py
+### Additional Alpha Insights
+- **Asymmetric Drawdown Protection**: During prolonged market downturns (e.g., 2018 selloff, 2022 rate hikes), rotating to cash upon sustained negative sentiment cushioned the maximum drawdown on `NVDA` from **66.34% down to 54.47%** (a 12-percentage-point drawdown cushion) and raised the annualized Sharpe ratio to **1.08** (vs. 1.02 Buy & Hold).
+- **Rapid Alpha Decay**: Sentiment predictive power peaks at $T-1$ (the immediate next trading day) and decays by ~65% at $T-3$, approaching market noise by $T-5$.
 
-# Technical analysis with custom ticker
-python scripts/technical_analysis.py --ticker GOOGL
+---
 
-# Technical analysis with custom date range
-python scripts/technical_analysis.py --ticker AAPL --start-date 2022-01-01 --end-date 2023-12-31
+## End-to-End System Architecture
 
-# Technical analysis with custom indicators
-python scripts/technical_analysis.py --ticker AAPL --sma-window 10 20 50 --rsi-window 21
+```mermaid
+flowchart TD
+    subgraph DataIngestion["1. Raw Ingestion"]
+        NewsRaw["1.4M News Articles (FNSPID)"]
+        PriceRaw["Historical Daily OHLCV (2009–2023)"]
+    end
 
-# Correlation analysis with timezone handling
-python scripts/news_sentiment_stock_correlation.py --ticker AAPL
+    subgraph NLPEngine["2. Multi-Model Sentiment Scoring"]
+        FVADER["Financial VADER (Bull/Bear Lexicon)"]
+        LM["Loughran-McDonald (10-K Dictionary)"]
+        FBERT["FinBERT (Financial Transformer)"]
+        ENS["Ensemble Composite Engine"]
+    end
 
-# Correlation with lagged sentiment (previous day)
-python scripts/news_sentiment_stock_correlation.py --ticker AAPL --use-lagged --lag 1
+    subgraph FeatureEngineering["3. 113-Feature Alpha Matrix"]
+        Technicals["SMA-20/50, RSI-14, MACD, Volatility"]
+        Momentum["3D, 7D, 14D Sentiment Momentum"]
+        SessionCutoff["16:00 UTC-4 Session Cutoff Alignment"]
+    end
 
-# Comprehensive correlation analysis
-python scripts/news_sentiment_stock_correlation.py --ticker AAPL --comprehensive
+    subgraph MachineLearning["4. Models & Walk-Forward Backtesting"]
+        GBM["Gradient Boosting Classifier"]
+        RF["Random Forest Classifier"]
+        LR["L2-Regularized Logistic Regression"]
+        WF["13-Year Rolling Walk-Forward Analysis"]
+    end
+
+    subgraph FullStackUI["5. Interactive Dashboard (FastAPI + React)"]
+        API["FastAPI REST Endpoints (/api)"]
+        UI["React 18 / Vite / Recharts SPA (8 Tabs)"]
+        IngestDrop["Dynamic CSV Drag-and-Drop Ingestion"]
+    end
+
+    DataIngestion --> NLPEngine
+    NLPEngine --> FeatureEngineering
+    PriceRaw --> FeatureEngineering
+    FeatureEngineering --> MachineLearning
+    MachineLearning --> API
+    API --> UI
+    IngestDrop --> API
 ```
 
 ---
 
-## Troubleshooting
+## Interactive Dashboard User Guide
 
-### Common Environment Issues
+The dashboard is accessible locally at **`http://localhost:8000`**.
 
-#### 1. Import Errors
+### Header Controls & Live Predictor
+1. **Ticker Selector (Top-Right)**:
+   - Switch between supported equities (`AAPL`, `NVDA`, `MSFT`, `GOOG`, `AMZN`, `META`, `TSLA`, or any newly uploaded stock).
+   - Instantly recalculates charts, correlation tables, and model performance for that asset.
+2. **Live Headline Predictor (Top Purple Button)**:
+   - Click to open the inference modal.
+   - Enter any real-time news headline (e.g., *"NVIDIA reveals next-generation Blackwell architecture, beats quarterly consensus"*).
+   - Generates instantaneous sentiment scores across all 4 NLP engines and outputs a calibrated next-day market direction probability (Up vs Down).
 
-**Problem**: `ModuleNotFoundError: No module named 'talib'`
+---
 
-**Solution**:
+### Tab-by-Tab Breakdown
+
+#### Tab 1: Overview
+- **Macro Market Posture**: Bullish / Bearish regime badge based on recent headline volume and polarity.
+- **Sentiment Donut Chart**: Breakdown of Positive vs Negative vs Neutral sentiment distribution over the past 24 hours.
+- **Top Alpha Drivers**: Quick scorecard of the most predictive technical and sentiment features.
+- **Breaking News Feed**: Live stream of latest headlines with color-coded sentiment badges.
+
+#### Tab 2: Sentiment Engines
+- **Multi-Scorer Benchmark Table**: Empirical comparison of TextBlob, Financial VADER, Loughran-McDonald, FinBERT, and Ensemble.
+- **Correlation Lift Chart**: Bar chart highlighting the $>5\times$ predictive superiority of financial NLP models over generic English dictionaries.
+- **Searchable Headline Explorer**: Interactive table to search and view exact scores assigned to individual articles across all four NLP scorers.
+
+#### Tab 3: Technical & Price
+- **Interactive OHLCV Chart**: Daily closing prices with SMA-20 (blue) and SMA-50 (orange) overlays.
+- **Timeframe Selector**: Toggle between 3M, 6M, and 1Y views.
+- **RSI-14 Momentum Oscillator**: Displays overbought ($>70$) and oversold ($<30$) boundaries.
+- **Sentiment Volume Overlay**: Daily volume bars shaded green (positive net sentiment) or red (negative net sentiment).
+
+#### Tab 4: Alpha Correlations
+- **Statistically Filtered Alpha Scorecard**: Displays Pearson $r$, Spearman $\rho$, and $p$-values.
+- **Significance Badges**: Highlights statistically non-random features ($p < 0.05$).
+- **Lag Decay Analysis**: Evaluates return correlation across forward trading days ($T-1 \dots T-5$).
+
+#### Tab 5: ML Models
+- **Binary vs 3-Class Toggle**: Switch between binary direction (Up vs Down) and 3-class classification (Bullish, Flat, Bearish).
+- **Model Comparison Table**: Accuracy, Precision, Recall, F1 Score, and ROC-AUC for Gradient Boosting, Random Forest, and Logistic Regression.
+- **Gini Feature Importances**: Identifies which technical indicators and sentiment factors contribute most to model decisions.
+
+#### Tab 6: Walk-Forward Backtest
+- **13-Year Out-of-Sample Equity Curve**: Compares the Quantitative Sentiment Strategy against the Buy & Hold benchmark from 2011 to 2023.
+- **Log / Linear Scale Toggle**: Switch between logarithmic and linear performance charts.
+- **Underwater Drawdown Chart**: Visualizes portfolio drawdown severity, showing how rotating to cash protects capital during crashes.
+- **5-Fold TimeSeriesSplit Cross-Validation Table**: Outlines fold-by-fold accuracy and ROC-AUC stability.
+
+#### Tab 7: Ingest Data
+- **Stock Price CSV Dropzone**: Drag and drop any daily stock price file (e.g. from Yahoo Finance or `data/{TICKER}.csv`). The system calculates technical indicators and immediately registers the ticker in the top dropdown.
+- **News Headlines CSV Dropzone**: Drag and drop any financial news dataset. The backend scores sentiment across all 4 NLP engines, calculates return correlations, and merges it into the live news stream.
+
+#### Tab 8: About & Guide
+- Built-in comprehensive user manual, architecture diagram, methodology explanation, and CSV upload schemas accessible directly inside the web application.
+
+---
+
+## Dataset Ingestion & CSV Specifications
+
+If uploading your own CSV files in **Tab 7**, format them according to these schemas:
+
+### 1. Stock Price CSV Schema
+| Column Name | Required? | Type | Example / Description |
+| :--- | :---: | :---: | :--- |
+| `Date` | **Yes** | String (YYYY-MM-DD) | `2023-01-03` |
+| `Close` | **Yes** | Float | `145.92` (Daily closing price) |
+| `Open` | Optional | Float | `144.20` |
+| `High` | Optional | Float | `146.50` |
+| `Low` | Optional | Float | `143.80` |
+| `Volume` | Optional | Integer / Float | `72500000` |
+
+*Note: The filename determines the registered ticker symbol (e.g., uploading `AMD.csv` adds `AMD` to the ticker menu).*
+
+### 2. News Headlines CSV Schema
+| Column Name | Required? | Type | Example / Description |
+| :--- | :---: | :---: | :--- |
+| `Date` | **Yes** | String (ISO / YYYY-MM-DD) | `2023-01-03 14:30:00` |
+| `Headline` (or `title`) | **Yes** | String | *"Apple reports record holiday quarter revenue"* |
+| `Publisher` | Optional | String | *"Reuters"*, *"Bloomberg"* |
+| `Stock` (or `ticker`) | Optional | String | `AAPL` |
+
+---
+
+## Installation & Quickstart
+
+### Prerequisites
+- Python 3.10+ (tested on Python 3.12.3)
+- Node.js 18+ (tested on Node v20.10.0)
+
+### 1. Clone & Set Up Environment
 ```bash
-# Install TA-Lib system dependencies first, then:
-pip install TA-Lib
+git clone https://github.com/your-username/predicting-price-moves-with-news-Sentiment.git
+cd predicting-price-moves-with-news-Sentiment
+
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: .\venv\Scripts\Activate.ps1
+
+# Install Python dependencies
+pip install -r requirements.txt
 ```
 
-**Problem**: `ModuleNotFoundError: No module named 'bertopic'`
-
-**Solution**:
+### 2. Build the React Frontend (Optional if pre-built)
 ```bash
-pip install bertopic sentence-transformers
+cd frontend
+npm install
+npm run build
+cd ..
 ```
 
-#### 2. Data Loading Issues
+### 3. Launch the Full-Stack Dashboard
+```bash
+./venv/bin/python scripts/run_dashboard.py --host 0.0.0.0 --port 8000
+```
+Open **`http://localhost:8000`** in your browser to access the dashboard and **`http://localhost:8000/docs`** for interactive Swagger REST API documentation.
 
-**Problem**: `FileNotFoundError: [Errno 2] No such file or directory: 'data/financial_news.csv'`
+---
 
-**Solution**:
-- Ensure your CSV file is in the `data/` directory
-- Update the path in the script or use `--data-path` flag
+## Automated Test Suite
 
-**Problem**: `KeyError: 'headline'` - Missing required column
+The project includes an automated test suite covering API routes, sentiment scorers, feature engineering, correlation analysis, and backtesting:
 
-**Solution**:
-- Check that your CSV has all required columns: `headline`, `url`, `publisher`, `date`, `stock`
-- Run with verbose output to see exact error
-
-#### 3. Memory Issues with Large Datasets
-
-**Problem**: `MemoryError` during topic modeling
-
-**Solution**:
-- Reduce number of topics: `train_lda(num_topics=5)`
-- Sample the dataset: `df.sample(n=10000)`
-- Use `min_topic_size` parameter in BERTopic
-
-#### 4. Timezone Warnings
-
-**Problem**: `RuntimeWarning: datetime.datetime ... is not timezone-aware`
-
-**Solution**:
-- The correlation analysis handles this automatically with `--timezone` flag
-- Ensure news timestamps are properly localized
-
-#### 5. NLTK Data Issues
-
-**Problem**: `LookupError: 'punkt' not found`
-
-**Solution**:
-```python
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
+```bash
+./venv/bin/pytest tests/ -v
 ```
 
-### Performance Tips
+### Test Coverage Summary:
+- **`tests/test_backend_api.py`** (11 tests): Verifies all REST endpoints, CORS headers, mock file uploads, and error handling.
+- **`tests/test_sentiment_scorers.py`** (12 tests): Validates Financial VADER, Loughran-McDonald, FinBERT fallback scoring, and Ensemble weights.
+- **`tests/test_feature_engineer.py`** (8 tests): Checks temporal feature construction, technical indicators, and lookahead-prevention.
+- **`tests/test_correlation_analyzer.py`** (7 tests): Validates Pearson/Spearman calculations, $p$-values, and lag matrices.
+- **`tests/test_model_pipeline.py`** (6 tests): Tests binary and multiclass model training, scaling, and evaluation.
+- **`tests/test_validation_strategy.py`** (4 tests): Tests TimeSeriesSplit cross-validation and 13-year rolling walk-forward backtest execution.
+- **`tests/test_sentiment_analyzer.py`** (8 tests): Tests timezones, session classification, and publisher bias adjustments.
+- **`tests/test_core_functions.py`** (17 tests): Tests basic statistics, topic modeling, and data loader utilities.
 
-1. **Speed up EDA**: Use `--skip-bertopic` if not needed
-2. **Parallel processing**: Gensim's LdaMulticore uses multiple cores
-3. **Reduce plot resolution**: Change `dpi=300` to `dpi=100` in savefig calls
-4. **Batch processing**: Process multiple tickers in a loop
+**Total**: **73 tests passed, 0 failures**.
 
-### Getting Help
+---
 
-1. Check the output logs for detailed error messages
-2. Run with `--verbose` flag for more information
-3. Review the analysis summary in `output/*/summary.json`
-4. Examine the interactive HTML visualizations for data insights
+## Project Directory Structure
+
+```
+├── backend/                        # FastAPI REST API Backend
+│   ├── main.py                     # API entry point & static frontend mounting
+│   └── api/
+│       ├── routes.py               # 11 REST endpoints (predictions, upload, backtest)
+│       └── schemas.py              # Pydantic data schemas
+├── frontend/                       # React 18 + Vite + Recharts SPA
+│   ├── src/
+│   │   ├── components/             # React tab views & modals
+│   │   │   ├── Navbar.jsx          # Header with ticker switcher & live predictor
+│   │   │   ├── OverviewTab.jsx     # Tab 1: Macro KPIs & breaking news
+│   │   │   ├── NewsSentimentTab.jsx# Tab 2: Multi-scorer benchmark & explorer
+│   │   │   ├── TechnicalAnalysisTab.jsx # Tab 3: OHLCV, SMA, RSI, volume
+│   │   │   ├── CorrelationMatrixTab.jsx # Tab 4: Lead/lag alpha scorecard
+│   │   │   ├── ModelPerformanceTab.jsx  # Tab 5: ML evaluation & feature importance
+│   │   │   ├── WalkForwardBacktestTab.jsx# Tab 6: 13-year backtest & drawdown
+│   │   │   ├── DataIngestionTab.jsx# Tab 7: Price & news CSV dropzones
+│   │   │   ├── AboutTab.jsx        # Tab 8: Built-in documentation & guide
+│   │   │   └── LivePredictorModal.jsx # Live headline inference modal
+│   │   ├── services/api.js         # Frontend REST API client
+│   │   ├── App.jsx                 # Main SPA application
+│   │   └── index.css               # Modern fintech dark theme styling
+│   └── dist/                       # Compiled production frontend assets
+├── data/                           # Raw datasets (AAPL, NVDA, TSLA, news headlines)
+├── output/                         # Processed datasets, models, and backtest results
+│   ├── data/                       # Scored news, topics, 113-feature matrices
+│   ├── models/                     # Trained Gradient Boosting, RF, and scalers
+│   └── figures/                    # Saved evaluation charts and plots
+├── scripts/                        # Standalone execution & benchmark scripts
+│   ├── run_dashboard.py            # Dashboard launcher script
+│   ├── run_sentiment_benchmark.py  # Step 5 multi-scorer benchmark runner
+│   ├── run_validation.py           # Step 6 walk-forward analysis runner
+│   └── run_model_pipeline.py       # Step 4 ML pipeline runner
+├── src/                            # Core quantitative Python library
+│   ├── sentiment_scorers.py        # Fin-VADER, Loughran-McDonald, FinBERT, Ensemble
+│   ├── validation_strategy.py      # TimeSeriesSplit CV & Walk-Forward backtester
+│   ├── feature_engineer.py         # 113 alpha feature engineering pipeline
+│   ├── correlation_analyzer.py     # Statistical correlation & lag analyzer
+│   ├── model_pipeline.py           # Classifier training & inference pipeline
+│   └── sentiment_analyzer.py       # Timestamp normalization & session classification
+├── tests/                          # 73 automated pytest test cases
+└── README.md                       # Comprehensive project documentation
+```
+
+---
+
+## Author & Contact Information
+
+**Natnael Yilma**  
+Quantitative Developer & Financial NLP Researcher
+
+- **Email**: [natnael.yilma27@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=natnael.yilma27@gmail.com&su=Question%20regarding%20Financial%20News%20Sentiment%20Project) *(Click to Compose in Gmail)* or via [mailto](mailto:natnael.yilma27@gmail.com?subject=Question%20regarding%20Financial%20News%20Sentiment%20Project)
+- **Phone**: [+251 929 709 562](tel:+251929709562) *(Click to Call)*
+

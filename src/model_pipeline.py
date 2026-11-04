@@ -441,10 +441,12 @@ class ModelPipeline:
 
         model_path = self.output_dir / "models" / f"best_model_{self.ticker}_{self.target_mode}.joblib"
         scaler_path = self.output_dir / "models" / f"scaler_{self.ticker}.joblib"
-        features_path = self.output_dir / "models" / f"selected_features_{self.ticker}.json"
+        scaler_mode_path = self.output_dir / "models" / f"scaler_{self.ticker}_{self.target_mode}.joblib"
+        features_path = self.output_dir / "models" / f"selected_features_{self.ticker}_{self.target_mode}.json"
 
         joblib.dump(best_model, model_path)
         joblib.dump(self.scaler, scaler_path)
+        joblib.dump(self.scaler, scaler_mode_path)
 
         with open(features_path, "w", encoding="utf-8") as f:
             json.dump({"features": self.selected_features, "target_mode": self.target_mode}, f, indent=2)
