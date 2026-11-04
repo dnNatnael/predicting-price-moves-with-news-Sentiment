@@ -1,0 +1,6 @@
+approach_name,mean_score,std_score,pct_positive,pct_negative,pct_neutral,pearson_r_with_return,pearson_pvalue,spearman_rho_with_return,spearman_pvalue,is_significant
+Ensemble Composite,0.0508,0.3286,30.58,27.94,41.48,0.0543,0.0,0.0492,0.0,True
+FinBERT,0.0756,0.3599,32.31,24.83,42.86,0.0524,0.0,0.0401,0.0,True
+Financial VADER,0.0756,0.3599,32.31,24.83,42.86,0.0524,0.0,0.0401,0.0,True
+Loughran-McDonald,0.0055,0.4852,12.69,11.93,75.39,0.0445,0.0,0.0411,0.0,True
+Standard TextBlob,0.038,0.1556,22.42,7.19,70.39,0.0035,0.416797,-0.0344,0.0,False

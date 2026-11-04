@@ -27,6 +27,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Download required NLTK data for financial sentiment
 RUN python -c "import nltk; nltk.download('vader_lexicon', quiet=True); nltk.download('punkt', quiet=True)"
 
+# Ensure runtime data and model directories exist
+RUN mkdir -p data output/data output/models
+
 # Copy backend code, models, data, and scripts
 COPY backend/ ./backend/
 COPY src/ ./src/

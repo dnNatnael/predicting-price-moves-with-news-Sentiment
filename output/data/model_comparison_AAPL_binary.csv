@@ -1,0 +1,4 @@
+model_name,target_mode,train_accuracy,val_accuracy,test_accuracy,test_balanced_accuracy,test_precision_macro,test_recall_macro,test_f1_macro,test_roc_auc,strategy_cumulative_return,benchmark_cumulative_return,strategy_sharpe_ratio
+Gradient_Boosting,binary,0.6615,0.4894,0.5565,0.5597,0.5609,0.5597,0.5554,0.5538,-0.2212,0.3817,-0.4163
+Random_Forest,binary,0.6925,0.5159,0.5053,0.502,0.5021,0.502,0.5004,0.5174,0.1572,0.3817,0.4336
+Logistic_Regression,binary,0.5282,0.4859,0.4735,0.4931,0.4519,0.4931,0.3459,0.4759,0.064,0.3817,0.752

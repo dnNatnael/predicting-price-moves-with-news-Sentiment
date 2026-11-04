@@ -1,0 +1,84 @@
+{
+  "total_articles": 55987,
+  "approaches_evaluated": [
+    "Ensemble Composite",
+    "FinBERT",
+    "Financial VADER",
+    "Loughran-McDonald",
+    "Standard TextBlob"
+  ],
+  "best_predictive_approach": "Ensemble Composite",
+  "weights_used": {
+    "fin_vader": 0.35,
+    "loughran_mcdonald": 0.3,
+    "finbert": 0.25,
+    "textblob": 0.1
+  },
+  "approach_metrics": [
+    {
+      "approach_name": "Ensemble Composite",
+      "mean_score": 0.0508,
+      "std_score": 0.3286,
+      "pct_positive": 30.58,
+      "pct_negative": 27.94,
+      "pct_neutral": 41.48,
+      "pearson_r_with_return": 0.0543,
+      "pearson_pvalue": 0.0,
+      "spearman_rho_with_return": 0.0492,
+      "spearman_pvalue": 0.0,
+      "is_significant": true
+    },
+    {
+      "approach_name": "FinBERT",
+      "mean_score": 0.0756,
+      "std_score": 0.3599,
+      "pct_positive": 32.31,
+      "pct_negative": 24.83,
+      "pct_neutral": 42.86,
+      "pearson_r_with_return": 0.0524,
+      "pearson_pvalue": 0.0,
+      "spearman_rho_with_return": 0.0401,
+      "spearman_pvalue": 0.0,
+      "is_significant": true
+    },
+    {
+      "approach_name": "Financial VADER",
+      "mean_score": 0.0756,
+      "std_score": 0.3599,
+      "pct_positive": 32.31,
+      "pct_negative": 24.83,
+      "pct_neutral": 42.86,
+      "pearson_r_with_return": 0.0524,
+      "pearson_pvalue": 0.0,
+      "spearman_rho_with_return": 0.0401,
+      "spearman_pvalue": 0.0,
+      "is_significant": true
+    },
+    {
+      "approach_name": "Loughran-McDonald",
+      "mean_score": 0.0055,
+      "std_score": 0.4852,
+      "pct_positive": 12.69,
+      "pct_negative": 11.93,
+      "pct_neutral": 75.39,
+      "pearson_r_with_return": 0.0445,
+      "pearson_pvalue": 0.0,
+      "spearman_rho_with_return": 0.0411,
+      "spearman_pvalue": 0.0,
+      "is_significant": true
+    },
+    {
+      "approach_name": "Standard TextBlob",
+      "mean_score": 0.038,
+      "std_score": 0.1556,
+      "pct_positive": 22.42,
+      "pct_negative": 7.19,
+      "pct_neutral": 70.39,
+      "pearson_r_with_return": 0.0035,
+      "pearson_pvalue": 0.416797,
+      "spearman_rho_with_return": -0.0344,
+      "spearman_pvalue": 0.0,
+      "is_significant": false
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "ticker": "NVDA",
+  "target_variable": "target_next_day_return",
+  "total_features_evaluated": 106,
+  "statistically_significant_count": 4,
+  "top_10_features": [
+    {
+      "feature_name": "daily_return",
+      "pearson_r": -0.044,
+      "pearson_pvalue": 0.006916,
+      "spearman_rho": -0.0306,
+      "is_significant": true
+    },
+    {
+      "feature_name": "log_return",
+      "pearson_r": -0.0438,
+      "pearson_pvalue": 0.007092,
+      "spearman_rho": -0.0306,
+      "is_significant": true
+    },
+    {
+      "feature_name": "sentiment_velocity_1d",
+      "pearson_r": 0.0363,
+      "pearson_pvalue": 0.025746,
+      "spearman_rho": 0.019,
+      "is_significant": true
+    },
+    {
+      "feature_name": "is_wednesday",
+      "pearson_r": -0.0354,
+      "pearson_pvalue": 0.029879,
+      "spearman_rho": -0.0271,
+      "is_significant": true
+    },
+    {
+      "feature_name": "sentiment_lag_1",
+      "pearson_r": -0.0241,
+      "pearson_pvalue": 0.138546,
+      "spearman_rho": 0.004,
+      "is_significant": false
+    },
+    {
+      "feature_name": "day_of_week_num",
+      "pearson_r": -0.023,
+      "pearson_pvalue": 0.157145,
+      "spearman_rho": -0.0073,
+      "is_significant": false
+    },
+    {
+      "feature_name": "news_volume_surge_zscore",
+      "pearson_r": -0.0221,
+      "pearson_pvalue": 0.173826,
+      "spearman_rho": -0.019,
+      "is_significant": false
+    },
+    {
+      "feature_name": "sentiment_std",
+      "pearson_r": -0.0202,
+      "pearson_pvalue": 0.213914,
+      "spearman_rho": -0.0087,
+      "is_significant": false
+    },
+    {
+      "feature_name": "headline_length_std",
+      "pearson_r": -0.018,
+      "pearson_pvalue": 0.267794,
+      "spearman_rho": -0.0046,
+      "is_significant": false
+    },
+    {
+      "feature_name": "sentiment_median",
+      "pearson_r": 0.0168,
+      "pearson_pvalue": 0.303032,
+      "spearman_rho": 0.0103,
+      "is_significant": false
+    }
+  ],
+  "best_lag_feature": "sentiment_velocity_1d",
+  "best_topic_feature": "topic_share_6"
+}

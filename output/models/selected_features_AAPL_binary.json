@@ -1,0 +1,18 @@
+{
+  "features": [
+    "sma_cross_20_50",
+    "bollinger_pband",
+    "atr_14",
+    "macd_signal",
+    "daily_return",
+    "is_wednesday",
+    "sentiment_mergers",
+    "volatility_20d",
+    "bollinger_width",
+    "rsi_14",
+    "news_volume",
+    "macd_hist",
+    "Volume"
+  ],
+  "target_mode": "binary"
+}

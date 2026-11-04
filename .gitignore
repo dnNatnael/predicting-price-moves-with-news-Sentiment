@@ -48,10 +48,24 @@ Thumbs.db
 # -------------------------
 #  Data files (avoid pushing large datasets)
 # -------------------------
-data/
-*.csv
 *.xlsx
 *.parquet
+
+# Keep sample stock data in data/
+!data/
+!data/*.csv
+
+# Exclude 313MB raw dataset (exceeds GitHub 100MB limit)
+data/raw_analyst_ratings.csv
+
+# Keep precomputed output datasets & metrics
+!output/data/
+!output/data/*.csv
+!output/data/*.json
+
+# Exclude large intermediate output files (>10MB)
+output/data/articles_with_sentiment.csv
+output/data/articles_with_topics.csv
 
 # -------------------------
 #  Model artifacts
@@ -59,7 +73,11 @@ data/
 models/
 *.h5
 *.pkl
-*.joblib
+
+# Keep trained lightweight model binaries for dashboard inference
+!output/models/
+!output/models/*.joblib
+!output/models/*.json
 
 # -------------------------
 #  Build / packaging

@@ -1,0 +1,6 @@
+feature_name,target_name,pearson_r,pearson_pvalue,spearman_rho,spearman_pvalue,ci_lower_95,ci_upper_95,sample_size,is_significant
+sentiment_mergers,target_next_day_return,0.0221,0.174777,0.0243,0.135489,-0.0098,0.054,3773,False
+sentiment_earnings,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,3773,False
+sentiment_fda,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,3773,False
+sentiment_price_target,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,3773,False
+sentiment_product_launch,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,3773,False

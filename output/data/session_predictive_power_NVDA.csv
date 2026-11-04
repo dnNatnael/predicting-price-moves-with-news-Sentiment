@@ -1,0 +1,4 @@
+feature_name,target_name,pearson_r,pearson_pvalue,spearman_rho,spearman_pvalue,ci_lower_95,ci_upper_95,sample_size,is_significant
+sentiment_regular_hours,target_next_day_return,0.0062,0.703589,0.004,0.805791,-0.0257,0.0381,3773,False
+sentiment_pre_market,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,3773,False
+sentiment_post_market,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,3773,False

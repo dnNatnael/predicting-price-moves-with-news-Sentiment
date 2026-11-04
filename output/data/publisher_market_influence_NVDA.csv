@@ -1,0 +1,109 @@
+feature_name,target_name,pearson_r,pearson_pvalue,spearman_rho,spearman_pvalue,ci_lower_95,ci_upper_95,sample_size,is_significant,publisher,article_count
+David Trainer,target_next_day_return,1.0,0.0,1.0,0.0,0.9984,1.0,5,True,David Trainer,5
+Daniel Ho,target_next_day_return,0.8077,0.004708,0.8452,0.002077,0.3624,0.9528,10,True,Daniel Ho,10
+TD Ameritrade,target_next_day_return,0.7587,0.137032,0.6708,0.21517,-0.3738,0.983,5,False,TD Ameritrade,5
+Benzinga Pro Newsdesk,target_next_day_return,0.7565,0.081748,0.6377,0.173071,-0.1427,0.9716,6,False,Benzinga Pro Newsdesk,6
+Dylan Wittenberg,target_next_day_return,0.6772,0.031452,0.527,0.117495,0.083,0.9162,10,True,Dylan Wittenberg,10
+Hannah Genig,target_next_day_return,0.6108,0.03488,0.8339,0.000748,0.0568,0.8772,12,True,Hannah Genig,12
+James Hunt,target_next_day_return,0.5423,0.131412,0.5342,0.138464,-0.1903,0.887,9,False,James Hunt,9
+Drew Levine,target_next_day_return,0.5371,0.271845,0.0,1.0,-0.4866,0.9392,6,False,Drew Levine,6
+Unknown,target_next_day_return,0.5203,0.289995,0.4395,0.383221,-0.5042,0.9364,6,False,Unknown,6
+Gary Cassady,target_next_day_return,0.5124,0.298702,0.7746,0.070484,-0.5122,0.9351,6,False,Gary Cassady,6
+Jake L'Ecuyer,target_next_day_return,0.5058,0.200955,0.6506,0.080638,-0.309,0.8924,8,False,Jake L'Ecuyer,8
+Renato Capelj,target_next_day_return,0.3964,0.103431,0.2679,0.282438,-0.0865,0.7284,18,False,Renato Capelj,18
+Bill Stoller,target_next_day_return,0.3953,0.084526,0.4034,0.077746,-0.0573,0.7131,20,False,Bill Stoller,20
+Randy Elias,target_next_day_return,0.3708,0.412921,0.0609,0.896875,-0.5304,0.8785,7,False,Randy Elias,7
+Dhiraj Surapaneni,target_next_day_return,0.324,0.238692,0.4049,0.134367,-0.2257,0.7172,15,False,Dhiraj Surapaneni,15
+Benzinga  Newsdesk,target_next_day_return,0.3145,0.235448,0.4612,0.07213,-0.2146,0.7009,16,False,Benzinga  Newsdesk,16
+Phil Marsh,target_next_day_return,0.2752,0.473508,-0.2348,0.543134,-0.4759,0.7942,9,False,Phil Marsh,9
+R. Chandrasekaran,target_next_day_return,0.2409,0.115178,0.2378,0.120074,-0.0603,0.5019,44,False,R. Chandrasekaran,44
+Amy Weingarden,target_next_day_return,0.2239,0.669754,0.3131,0.54568,-0.7182,0.8762,6,False,Amy Weingarden,6
+Chris Dier-Scalise,target_next_day_return,0.2025,0.187404,0.2373,0.120838,-0.1004,0.4711,44,False,Chris Dier-Scalise,44
+Tyree Gorges,target_next_day_return,0.1813,0.189552,0.3745,0.005268,-0.0909,0.4283,54,False,Tyree Gorges,54
+Matthew McCall,target_next_day_return,0.1775,0.110639,0.1977,0.074976,-0.0411,0.3799,82,False,Matthew McCall,82
+Merrick Weingarten,target_next_day_return,0.1746,0.740831,0.0857,0.871743,-0.7421,0.8638,6,False,Merrick Weingarten,6
+Tim Parker,target_next_day_return,0.1709,0.746209,-0.0323,0.95163,-0.7438,0.8628,6,False,Tim Parker,6
+luke@benzinga.com,target_next_day_return,0.1653,0.006576,0.1691,0.005412,0.0466,0.2794,269,True,luke@benzinga.com,269
+Theo Kratz,target_next_day_return,0.1604,0.796594,0.0,1.0,-0.8408,0.9134,5,False,Theo Kratz,5
+Brett Hershman,target_next_day_return,0.1382,0.466388,0.1244,0.512563,-0.2337,0.4748,30,False,Brett Hershman,30
+Elizabeth Balboa,target_next_day_return,0.1354,0.143705,0.123,0.184355,-0.0465,0.3086,118,False,Elizabeth Balboa,118
+Nelson Hem,target_next_day_return,0.1237,0.058227,0.1044,0.110584,-0.0043,0.2478,235,False,Nelson Hem,235
+Tanzeel Akhtar,target_next_day_return,0.1195,0.182547,0.0896,0.318636,-0.0566,0.2884,126,False,Tanzeel Akhtar,126
+Mark Fritz,target_next_day_return,0.0943,0.728417,0.0287,0.916096,-0.4211,0.5636,16,False,Mark Fritz,16
+Ezra Schwarzbaum,target_next_day_return,0.0868,0.723844,0.0958,0.696442,-0.3825,0.5205,19,False,Ezra Schwarzbaum,19
+Jon Kashat,target_next_day_return,0.0768,0.762054,0.2369,0.343877,-0.4046,0.5248,18,False,Jon Kashat,18
+Ross Cameron - Warrior Trading,target_next_day_return,0.0674,0.835108,0.0561,0.86256,-0.5269,0.6174,12,False,Ross Cameron - Warrior Trading,12
+Spencer Israel,target_next_day_return,0.0641,0.702407,-0.1176,0.481831,-0.261,0.376,38,False,Spencer Israel,38
+Matthew Kanterman,target_next_day_return,0.0581,0.873268,0.1104,0.761356,-0.5932,0.6635,10,False,Matthew Kanterman,10
+Aaron Levitt,target_next_day_return,0.0562,0.869613,-0.1981,0.55927,-0.5626,0.6347,11,False,Aaron Levitt,11
+Emily Austin,target_next_day_return,0.0477,0.682094,-0.0336,0.773479,-0.1796,0.2703,76,False,Emily Austin,76
+John Seward,target_next_day_return,0.0439,0.790761,-0.0261,0.874526,-0.2754,0.3545,39,False,John Seward,39
+Juan Lopez,target_next_day_return,0.0394,0.811935,0.0957,0.562221,-0.2796,0.3505,39,False,Juan Lopez,39
+Matthew Kennedy,target_next_day_return,0.0353,0.850622,0.0143,0.938932,-0.3231,0.3848,31,False,Matthew Kennedy,31
+Alex Furno,target_next_day_return,0.0349,0.897961,0.2246,0.403089,-0.4689,0.5216,16,False,Alex Furno,16
+Crystal Mills,target_next_day_return,0.032,0.921348,0.1011,0.75456,-0.552,0.595,12,False,Crystal Mills,12
+Monica Gerson,target_next_day_return,0.0303,0.455021,0.0282,0.48659,-0.0492,0.1094,610,False,Monica Gerson,610
+Andrew Efimoff,target_next_day_return,0.0267,0.903916,-0.1154,0.600189,-0.3898,0.4341,23,False,Andrew Efimoff,23
+Jim Swanson,target_next_day_return,0.0243,0.85783,-0.0758,0.575352,-0.2378,0.283,57,False,Jim Swanson,57
+vishwanath@benzinga.com,target_next_day_return,0.0204,0.53633,0.0416,0.206233,-0.0442,0.0848,924,False,vishwanath@benzinga.com,924
+ETF Professor,target_next_day_return,0.0172,0.265437,0.0341,0.027665,-0.0131,0.0475,4178,False,ETF Professor,4178
+Wayne Duggan,target_next_day_return,0.0171,0.726537,-0.023,0.637961,-0.0787,0.1126,420,False,Wayne Duggan,420
+Laura Brodbeck,target_next_day_return,0.0125,0.960652,-0.0851,0.737164,-0.457,0.4766,18,False,Laura Brodbeck,18
+Vick Meyer,target_next_day_return,0.0086,0.69245,0.0099,0.648522,-0.0339,0.0511,2128,False,Vick Meyer,2128
+Paul Quintaro,target_next_day_return,0.0086,0.578747,0.0217,0.163479,-0.0219,0.0391,4131,False,Paul Quintaro,4131
+Charles Gross,target_next_day_return,0.0004,0.985638,-0.005,0.836338,-0.0473,0.0482,1683,False,Charles Gross,1683
+Sebastian Brown,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,9,False,Sebastian Brown,9
+Thomas Bruni,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,5,False,Thomas Bruni,5
+ETF Digest,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,8,False,ETF Digest,8
+Eric Mancini,target_next_day_return,0.0,1.0,0.0,1.0,0.0,0.0,5,False,Eric Mancini,5
+Garrett Cook,target_next_day_return,-0.001,0.992759,-0.0207,0.849738,-0.2128,0.2109,86,False,Garrett Cook,86
+Taylor Cox,target_next_day_return,-0.0021,0.991288,-0.0226,0.905704,-0.3621,0.3585,30,False,Taylor Cox,30
+Gordon Wilcox,target_next_day_return,-0.0031,0.991919,-0.1855,0.544073,-0.5532,0.5488,13,False,Gordon Wilcox,13
+Neer Varshney,target_next_day_return,-0.0057,0.966253,-0.0108,0.93615,-0.2636,0.253,58,False,Neer Varshney,58
+Joel Elconin,target_next_day_return,-0.0133,0.952086,-0.087,0.692913,-0.4232,0.4011,23,False,Joel Elconin,23
+Benzinga_Newsdesk,target_next_day_return,-0.0164,0.564887,-0.069,0.015183,-0.072,0.0394,1238,False,Benzinga_Newsdesk,1238
+Luke J Jacobi,target_next_day_return,-0.0178,0.819842,0.0511,0.513158,-0.1697,0.1349,166,False,Luke J Jacobi,166
+Shanthi Rexaline,target_next_day_return,-0.0197,0.586903,-0.0382,0.292253,-0.0906,0.0514,762,False,Shanthi Rexaline,762
+Benzinga Newsdesk,target_next_day_return,-0.0205,0.013325,-0.0229,0.005859,-0.0368,-0.0043,14530,True,Benzinga Newsdesk,14530
+Jayson Derrick,target_next_day_return,-0.0244,0.656729,-0.0547,0.320039,-0.1316,0.0833,333,False,Jayson Derrick,333
+Rich Worthington,target_next_day_return,-0.0271,0.822456,0.0489,0.685301,-0.2588,0.2075,71,False,Rich Worthington,71
+Benzinga News Desk,target_next_day_return,-0.0343,0.807592,-0.0684,0.626591,-0.3018,0.2382,53,False,Benzinga News Desk,53
+Hal Lindon,target_next_day_return,-0.051,0.055555,-0.0479,0.071782,-0.1029,0.0012,1411,False,Hal Lindon,1411
+Eddie Staley,target_next_day_return,-0.0565,0.076082,-0.0184,0.564382,-0.1186,0.0059,985,False,Eddie Staley,985
+Javier Hasse,target_next_day_return,-0.0569,0.413352,-0.0068,0.92251,-0.1911,0.0794,209,False,Javier Hasse,209
+Benzinga Newsdesk,target_next_day_return,-0.0745,2.7e-05,-0.3068,0.0,-0.1089,-0.0398,3177,True,Benzinga Newsdesk,3177
+Craig Jones,target_next_day_return,-0.0772,0.191645,-0.0573,0.332823,-0.191,0.0388,288,False,Craig Jones,288
+Benzinga Newdesk,target_next_day_return,-0.0901,0.740069,-0.0311,0.908911,-0.5607,0.4246,16,False,Benzinga Newdesk,16
+Benzinga Staff,target_next_day_return,-0.1035,0.868466,-0.4617,0.433766,-0.9033,0.857,5,False,Benzinga Staff,5
+Mary Meldrum,target_next_day_return,-0.1057,0.841996,-0.2125,0.686031,-0.8448,0.7721,6,False,Mary Meldrum,6
+Priya Nigam,target_next_day_return,-0.1079,0.485705,-0.0857,0.580025,-0.3922,0.1952,44,False,Priya Nigam,44
+Lisa Levin,target_next_day_return,-0.1148,0.0,-0.0818,0.0,-0.1321,-0.0974,12406,True,Lisa Levin,12406
+Daniel Hayden IV,target_next_day_return,-0.1441,0.556219,-0.2474,0.30717,-0.5615,0.3318,19,False,Daniel Hayden IV,19
+Dwight Einhorn,target_next_day_return,-0.1459,0.576358,-0.0695,0.790889,-0.5855,0.36,17,False,Dwight Einhorn,17
+Allie Wickman,target_next_day_return,-0.1563,0.136679,-0.1229,0.243267,-0.35,0.0501,92,False,Allie Wickman,92
+Christina Jackson,target_next_day_return,-0.1632,0.726618,-0.0546,0.907523,-0.816,0.6725,7,False,Christina Jackson,7
+FreightWaves,target_next_day_return,-0.1694,0.260422,-0.2419,0.10534,-0.4381,0.1272,46,False,FreightWaves,46
+Jeff Uscher,target_next_day_return,-0.1697,0.784943,-0.3043,0.61863,-0.915,0.838,5,False,Jeff Uscher,5
+Brad Hammond,target_next_day_return,-0.1713,0.470351,0.0207,0.930977,-0.5705,0.2935,20,False,Brad Hammond,20
+Rebecca Sheppard,target_next_day_return,-0.2231,0.563932,-0.3667,0.331722,-0.7727,0.5177,9,False,Rebecca Sheppard,9
+Early Global News,target_next_day_return,-0.2277,0.587573,-0.6298,0.094214,-0.8035,0.5681,8,False,Early Global News,8
+Benzinga Insights,target_next_day_return,-0.2344,0.0,-0.2366,0.0,-0.2724,-0.1956,2332,True,Benzinga Insights,2332
+David Fabian,target_next_day_return,-0.236,0.067057,-0.2145,0.096839,-0.4605,0.0168,61,False,David Fabian,61
+Kevin Riley,target_next_day_return,-0.257,0.274054,-0.2689,0.251634,-0.6281,0.2093,20,False,Kevin Riley,20
+Manikandan Raman,target_next_day_return,-0.2931,0.021876,-0.302,0.018005,-0.5075,-0.0446,61,True,Manikandan Raman,61
+David Johnson,target_next_day_return,-0.3091,0.116698,-0.3705,0.057084,-0.6167,0.0804,27,False,David Johnson,27
+Ramon Lewis,target_next_day_return,-0.3425,0.211381,-0.1606,0.567509,-0.7272,0.2058,15,False,Ramon Lewis,15
+Shivdeep Dhaliwal,target_next_day_return,-0.3998,0.00487,-0.2231,0.127521,-0.6142,-0.1305,48,True,Shivdeep Dhaliwal,48
+Joe Young,target_next_day_return,-0.4493,0.264016,-0.4092,0.314149,-0.8765,0.3736,8,False,Joe Young,8
+Jonathan Chen,target_next_day_return,-0.4665,0.050986,-0.428,0.076416,-0.7665,0.0005,18,False,Jonathan Chen,18
+JJ Kinahan,target_next_day_return,-0.5001,1e-05,-0.5577,1e-06,-0.6578,-0.3004,70,True,JJ Kinahan,70
+TipRanks,target_next_day_return,-0.5109,0.379023,-0.5798,0.305575,-0.9603,0.6761,5,False,TipRanks,5
+Direxion,target_next_day_return,-0.5247,0.00172,-0.5339,0.001374,-0.7355,-0.2212,33,True,Direxion,33
+Dave Royse,target_next_day_return,-0.5287,0.116172,-0.5215,0.122111,-0.869,0.1513,10,False,Dave Royse,10
+Sam Mattera,target_next_day_return,-0.5718,0.31388,-0.4588,0.436998,-0.9665,0.6266,5,False,Sam Mattera,5
+George Maniere,target_next_day_return,-0.5846,0.12798,-0.7686,0.025839,-0.9131,0.2041,8,False,George Maniere,8
+Bryan Finnigan,target_next_day_return,-0.7835,0.065213,-0.6956,0.12488,-0.9751,0.077,6,False,Bryan Finnigan,6
+Benzinga Staff Writer,target_next_day_return,-0.8257,0.085048,-0.8944,0.040519,-0.9881,0.2084,5,False,Benzinga Staff Writer,5
+TD Ameritrade Network,target_next_day_return,-0.8948,0.016005,-1.0,0.0,-0.9885,-0.3042,6,True,TD Ameritrade Network,6
+Anthony Sanfilippo,target_next_day_return,-0.9436,0.001407,-0.6236,0.134541,-0.9919,-0.6584,7,True,Anthony Sanfilippo,7
+Jose Rodrigo Safdiye,target_next_day_return,,,,,,,39,False,Jose Rodrigo Safdiye,39

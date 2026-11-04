@@ -1,0 +1,18 @@
+{
+  "features": [
+    "bollinger_pband",
+    "atr_14",
+    "macd_signal",
+    "topic_count_9",
+    "rsi_14",
+    "volatility_20d",
+    "cat_count_mergers",
+    "macd_hist",
+    "sma_cross_20_50",
+    "news_volume",
+    "Volume",
+    "daily_return",
+    "bollinger_width"
+  ],
+  "target_mode": "multiclass"
+}

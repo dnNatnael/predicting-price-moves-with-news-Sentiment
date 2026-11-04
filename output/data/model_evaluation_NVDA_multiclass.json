@@ -1,0 +1,110 @@
+{
+  "ticker": "NVDA",
+  "target_mode": "multiclass",
+  "train_samples": 2641,
+  "val_samples": 566,
+  "test_samples": 566,
+  "best_model": "Logistic_Regression",
+  "models_evaluated": {
+    "Logistic_Regression": {
+      "model_name": "Logistic_Regression",
+      "target_mode": "multiclass",
+      "train_accuracy": 0.3809,
+      "val_accuracy": 0.3587,
+      "test_accuracy": 0.3375,
+      "test_balanced_accuracy": 0.3685,
+      "test_precision_macro": 0.3379,
+      "test_recall_macro": 0.3685,
+      "test_f1_macro": 0.3202,
+      "test_roc_auc": 0.4956,
+      "strategy_cumulative_return": -0.6002,
+      "benchmark_cumulative_return": 1.3961,
+      "strategy_sharpe_ratio": -1.1013
+    },
+    "Random_Forest": {
+      "model_name": "Random_Forest",
+      "target_mode": "multiclass",
+      "train_accuracy": 0.5346,
+      "val_accuracy": 0.3428,
+      "test_accuracy": 0.3198,
+      "test_balanced_accuracy": 0.323,
+      "test_precision_macro": 0.3131,
+      "test_recall_macro": 0.323,
+      "test_f1_macro": 0.2957,
+      "test_roc_auc": 0.5018,
+      "strategy_cumulative_return": -0.9835,
+      "benchmark_cumulative_return": 1.3961,
+      "strategy_sharpe_ratio": -5.3541
+    },
+    "Gradient_Boosting": {
+      "model_name": "Gradient_Boosting",
+      "target_mode": "multiclass",
+      "train_accuracy": 0.5854,
+      "val_accuracy": 0.3869,
+      "test_accuracy": 0.3551,
+      "test_balanced_accuracy": 0.3388,
+      "test_precision_macro": 0.3255,
+      "test_recall_macro": 0.3388,
+      "test_f1_macro": 0.318,
+      "test_roc_auc": 0.4888,
+      "strategy_cumulative_return": -0.8747,
+      "benchmark_cumulative_return": 1.3961,
+      "strategy_sharpe_ratio": -2.6822
+    }
+  },
+  "classification_report_best_model": {
+    "0": {
+      "precision": 0.42857142857142855,
+      "recall": 0.2796610169491525,
+      "f1-score": 0.3384615384615385,
+      "support": 236.0
+    },
+    "1": {
+      "precision": 0.15263157894736842,
+      "recall": 0.46774193548387094,
+      "f1-score": 0.23015873015873015,
+      "support": 62.0
+    },
+    "2": {
+      "precision": 0.43243243243243246,
+      "recall": 0.3582089552238806,
+      "f1-score": 0.39183673469387753,
+      "support": 268.0
+    },
+    "accuracy": 0.3374558303886926,
+    "macro avg": {
+      "precision": 0.33787847998374315,
+      "recall": 0.3685373025523013,
+      "f1-score": 0.32015233443804875,
+      "support": 566.0
+    },
+    "weighted avg": {
+      "precision": 0.40017298044078775,
+      "recall": 0.3374558303886926,
+      "f1-score": 0.3518710410684161,
+      "support": 566.0
+    }
+  },
+  "feature_importances": {
+    "Volume": 0.0977,
+    "volatility_20d": 0.0678,
+    "sma_cross_20_50": 0.064,
+    "macd_hist": 0.0536,
+    "atr_14": 0.0221,
+    "macd": 0.0212,
+    "price_to_sma_20": 0.02,
+    "bollinger_width": 0.0112,
+    "log_return": 0.0095,
+    "sentiment_velocity_1d": 0.0,
+    "topic_share_3": 0.0,
+    "is_wednesday": 0.0,
+    "sentiment_lag_1": 0.0,
+    "is_monday": 0.0,
+    "news_volume_surge_zscore": 0.0,
+    "sentiment_velocity_3d": 0.0,
+    "sentiment_lag_2": 0.0,
+    "headline_length_mean": 0.0,
+    "headline_length_std": 0.0,
+    "is_tuesday": 0.0
+  }
+}

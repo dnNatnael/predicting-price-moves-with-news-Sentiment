@@ -1,0 +1,103 @@
+{
+  "ticker": "AAPL",
+  "target_mode": "multiclass",
+  "train_samples": 2641,
+  "val_samples": 566,
+  "test_samples": 566,
+  "best_model": "Random_Forest",
+  "models_evaluated": {
+    "Logistic_Regression": {
+      "model_name": "Logistic_Regression",
+      "target_mode": "multiclass",
+      "train_accuracy": 0.3991,
+      "val_accuracy": 0.3675,
+      "test_accuracy": 0.3534,
+      "test_balanced_accuracy": 0.3452,
+      "test_precision_macro": 0.3517,
+      "test_recall_macro": 0.3452,
+      "test_f1_macro": 0.3004,
+      "test_roc_auc": 0.5415,
+      "strategy_cumulative_return": 0.8591,
+      "benchmark_cumulative_return": 0.3817,
+      "strategy_sharpe_ratio": 2.8147
+    },
+    "Random_Forest": {
+      "model_name": "Random_Forest",
+      "target_mode": "multiclass",
+      "train_accuracy": 0.5013,
+      "val_accuracy": 0.3551,
+      "test_accuracy": 0.3675,
+      "test_balanced_accuracy": 0.3763,
+      "test_precision_macro": 0.3779,
+      "test_recall_macro": 0.3763,
+      "test_f1_macro": 0.3591,
+      "test_roc_auc": 0.5484,
+      "strategy_cumulative_return": 0.0848,
+      "benchmark_cumulative_return": 0.3817,
+      "strategy_sharpe_ratio": 0.3302
+    },
+    "Gradient_Boosting": {
+      "model_name": "Gradient_Boosting",
+      "target_mode": "multiclass",
+      "train_accuracy": 0.5782,
+      "val_accuracy": 0.3516,
+      "test_accuracy": 0.3534,
+      "test_balanced_accuracy": 0.3298,
+      "test_precision_macro": 0.2954,
+      "test_recall_macro": 0.3298,
+      "test_f1_macro": 0.2855,
+      "test_roc_auc": 0.5094,
+      "strategy_cumulative_return": -0.5765,
+      "benchmark_cumulative_return": 0.3817,
+      "strategy_sharpe_ratio": -1.9107
+    }
+  },
+  "classification_report_best_model": {
+    "0": {
+      "precision": 0.3643122676579926,
+      "recall": 0.49746192893401014,
+      "f1-score": 0.4206008583690987,
+      "support": 197.0
+    },
+    "1": {
+      "precision": 0.33678756476683935,
+      "recall": 0.42207792207792205,
+      "f1-score": 0.3746397694524496,
+      "support": 154.0
+    },
+    "2": {
+      "precision": 0.4326923076923077,
+      "recall": 0.20930232558139536,
+      "f1-score": 0.28213166144200624,
+      "support": 215.0
+    },
+    "accuracy": 0.3674911660777385,
+    "macro avg": {
+      "precision": 0.3779307133723799,
+      "recall": 0.37628072553110914,
+      "f1-score": 0.3591240964211848,
+      "support": 566.0
+    },
+    "weighted avg": {
+      "precision": 0.38279796441089037,
+      "recall": 0.3674911660777385,
+      "f1-score": 0.35549682120922443,
+      "support": 566.0
+    }
+  },
+  "feature_importances": {
+    "bollinger_pband": 0.1693,
+    "Volume": 0.1463,
+    "volatility_20d": 0.119,
+    "rsi_14": 0.1183,
+    "bollinger_width": 0.0932,
+    "daily_return": 0.0925,
+    "macd_hist": 0.0893,
+    "atr_14": 0.0856,
+    "macd_signal": 0.082,
+    "sma_cross_20_50": 0.0045,
+    "topic_count_9": 0.0,
+    "cat_count_mergers": 0.0,
+    "news_volume": 0.0
+  }
+}

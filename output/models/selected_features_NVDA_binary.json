@@ -1,0 +1,26 @@
+{
+  "features": [
+    "log_return",
+    "rsi_14",
+    "sentiment_velocity_1d",
+    "macd_signal",
+    "bollinger_pband",
+    "topic_share_3",
+    "is_wednesday",
+    "sentiment_lag_1",
+    "is_monday",
+    "news_volume_surge_zscore",
+    "sentiment_velocity_3d",
+    "sentiment_lag_2",
+    "sma_50",
+    "Volume",
+    "bollinger_width",
+    "headline_length_mean",
+    "sma_cross_20_50",
+    "macd_hist",
+    "headline_length_std",
+    "is_tuesday",
+    "volatility_20d"
+  ],
+  "target_mode": "binary"
+}

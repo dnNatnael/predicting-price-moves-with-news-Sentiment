@@ -1,0 +1,2 @@
+total_articles,unique_publishers,unique_stocks,date_start,date_end,headline_length_min,headline_length_max,headline_length_mean,headline_length_median,headline_length_std,headline_length_q25,headline_length_q75,headline_word_min,headline_word_max,headline_word_mean,headline_word_median,headline_word_std,headline_word_q25,headline_word_q75
+55987,225,6204,2011-04-28 01:01:48+00:00,2020-06-11 21:12:35+00:00,12,512,80.01525354100059,63.0,56.126093834584985,42.0,91.0,2,77,12.435726150713558,10.0,8.458580941897166,7.0,14.0

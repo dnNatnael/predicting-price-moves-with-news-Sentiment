@@ -1,0 +1,80 @@
+{
+  "ticker": "AAPL",
+  "target_variable": "target_next_day_return",
+  "total_features_evaluated": 106,
+  "statistically_significant_count": 19,
+  "top_10_features": [
+    {
+      "feature_name": "topic_count_0",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    },
+    {
+      "feature_name": "topic_share_0",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    },
+    {
+      "feature_name": "days_since_last_news",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    },
+    {
+      "feature_name": "news_volume_surge_zscore",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    },
+    {
+      "feature_name": "has_price_target",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    },
+    {
+      "feature_name": "topic_count_9",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    },
+    {
+      "feature_name": "topic_count_7",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    },
+    {
+      "feature_name": "topic_share_7",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    },
+    {
+      "feature_name": "topic_share_2",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    },
+    {
+      "feature_name": "topic_count_2",
+      "pearson_r": -0.0446,
+      "pearson_pvalue": 0.006172,
+      "spearman_rho": -0.0277,
+      "is_significant": true
+    }
+  ],
+  "best_lag_feature": "sentiment_velocity_1d",
+  "best_topic_feature": "topic_count_0"
+}

@@ -1,0 +1,25 @@
+{
+  "features": [
+    "log_return",
+    "sentiment_velocity_1d",
+    "price_to_sma_20",
+    "macd",
+    "topic_share_3",
+    "is_wednesday",
+    "sentiment_lag_1",
+    "is_monday",
+    "news_volume_surge_zscore",
+    "sentiment_velocity_3d",
+    "sentiment_lag_2",
+    "Volume",
+    "headline_length_mean",
+    "sma_cross_20_50",
+    "macd_hist",
+    "atr_14",
+    "headline_length_std",
+    "bollinger_width",
+    "volatility_20d",
+    "is_tuesday"
+  ],
+  "target_mode": "multiclass"
+}
