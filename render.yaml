@@ -8,5 +8,4 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: PORT
-        value: 8000
-
+        value: 10000

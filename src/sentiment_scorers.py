@@ -39,13 +39,19 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 logger = logging.getLogger(__name__)
 
-# Optional transformers import for FinBERT
-try:
-    import torch
-    from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
-    TRANSFORMERS_AVAILABLE = True
-except ImportError:
-    TRANSFORMERS_AVAILABLE = False
+# Lazy loader for optional transformers/torch
+TRANSFORMERS_AVAILABLE = None
+
+def _is_transformers_available() -> bool:
+    global TRANSFORMERS_AVAILABLE
+    if TRANSFORMERS_AVAILABLE is None:
+        try:
+            import torch  # noqa: F401
+            from transformers import pipeline  # noqa: F401
+            TRANSFORMERS_AVAILABLE = True
+        except (ImportError, Exception):
+            TRANSFORMERS_AVAILABLE = False
+    return TRANSFORMERS_AVAILABLE
 
 
 @dataclass
@@ -320,11 +326,12 @@ class FinBERTScorer:
 
     def initialize(self) -> bool:
         """Load transformer model pipeline."""
-        if not TRANSFORMERS_AVAILABLE:
+        if not _is_transformers_available():
             logger.warning("transformers/torch not available. FinBERT will use fast heuristic fallback.")
             return False
 
         try:
+            from transformers import pipeline
             print(f"Loading Financial Transformer ({self.model_name})...")
             self.pipeline = pipeline(
                 "sentiment-analysis",
